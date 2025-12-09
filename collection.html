@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Where Your Imagination Becomes Jewellery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Home styles (MENU + LOGIN) -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Collection styles (carousel + products + modal) -->
+    <link rel="stylesheet" href="collection.css" />
+</head>
+<body>
+
+    <!-- 🔥 Same MENU Button (Top Right) -->
+    <button class="menu-trigger" onclick="toggleMenu()">
+        <span class="text">MENU</span>
+        <span class="line"></span>
+    </button>
+
+    <div class="collection-page">
+
+        <!-- HEADER -->
+        <header class="collection-header">
+            <div class="brand-block">
+                <div class="brand-mark">VIAN JEWELLERY</div>
+                <div class="brand-tagline">Exclusively Crafted For You</div>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <section class="collection-hero">
+            <div class="collection-badge">The 2025 High Jewellery Collection</div>
+            <h1 class="collection-title">Where Your Imagination Becomes Jewellery</h1>
+            <p class="collection-subcopy">
+                A constellation of ten celestial, one-of-one creations in platinum and rose gold —
+                conceived exclusively for the VIAN JEWELLERY. Every piece is crafted on commission only.
+            </p>
+        </section>
+
+        <!-- CAROUSEL -->
+        <section class="carousel-section">
+            <button class="carousel-arrow arrow-prev" aria-label="Previous piece">‹</button>
+
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+
+                    <!-- 1 -->
+                    <article class="product-slide active" data-index="0">
+                        <div class="product-inner">
+                            <!-- image upar, koi glow/core div nahi -->
+                            <div class="product-visual shape-orbit"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Ultra Limited</span>
+                                </div>
+                                <h2 class="product-name">Celestial Aurora Necklace</h2>
+                                <p class="product-desc">
+                                    A sweeping halo of platinum and rose gold, set with uncut diamonds that shimmer like a dawn-lit horizon.
+                                </p>
+                                <p class="product-spec">
+                                    Platinum &amp; 18K Rose Gold · Uncut Diamond Aurora Setting
+                                </p>
+                                <button class="commission-btn" data-product="Celestial Aurora Necklace">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 2 -->
+                    <article class="product-slide" data-index="1">
+                        <div class="product-inner">
+                            <div class="product-visual shape-portrait"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Collectors Only</span>
+                                </div>
+                                <h2 class="product-name">Stellar Crown Ring</h2>
+                                <p class="product-desc">
+                                    A coronet of starlight — tapered uncut diamonds rise like a celestial skyline around a platinum band.
+                                </p>
+                                <p class="product-spec">
+                                    Platinum · Crown-Set Uncut Diamonds
+                                </p>
+                                <button class="commission-btn" data-product="Stellar Crown Ring">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 3 -->
+                    <article class="product-slide" data-index="2">
+                        <div class="product-inner">
+                            <div class="product-visual shape-orbit-soft"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Private Edition</span>
+                                </div>
+                                <h2 class="product-name">Solstice Ray Earrings</h2>
+                                <p class="product-desc">
+                                    Twin rays of rose gold and platinum that catch light with every movement, like the longest day of the year.
+                                </p>
+                                <p class="product-spec">
+                                    18K Rose Gold · Platinum · Linear Uncut Diamonds
+                                </p>
+                                <button class="commission-btn" data-product="Solstice Ray Earrings">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 4 -->
+                    <article class="product-slide" data-index="3">
+                        <div class="product-inner">
+                            <div class="product-visual shape-band"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Only Here</span>
+                                </div>
+                                <h2 class="product-name">Orion Path Bracelet</h2>
+                                <p class="product-desc">
+                                    A linear constellation of baguette uncut diamonds, tracing the legendary path of Orion across the wrist.
+                                </p>
+                                <p class="product-spec">
+                                    Platinum · Channel-Set Uncut Diamonds
+                                </p>
+                                <button class="commission-btn" data-product="Orion Path Bracelet">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 5 -->
+                    <article class="product-slide" data-index="4">
+                        <div class="product-inner">
+                            <div class="product-visual shape-teardrop"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Ultra Limited</span>
+                                </div>
+                                <h2 class="product-name">Aurora Mist Pendant</h2>
+                                <p class="product-desc">
+                                    A levitating uncut diamond wrapped in a soft gradient of rose gold, echoing celestial fog at dawn.
+                                </p>
+                                <p class="product-spec">
+                                    Mixed Metal · Suspended Uncut Centre Stone
+                                </p>
+                                <button class="commission-btn" data-product="Aurora Mist Pendant">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 6 -->
+                    <article class="product-slide" data-index="5">
+                        <div class="product-inner">
+                            <div class="product-visual shape-choker"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Private Edition</span>
+                                </div>
+                                <h2 class="product-name">Luna Halo Choker</h2>
+                                <p class="product-desc">
+                                    A delicate lunar arc that rests at the collarbone, scattering moonlit reflections with every breath.
+                                </p>
+                                <p class="product-spec">
+                                    Platinum · Micro-Pavé Uncut Diamonds
+                                </p>
+                                <button class="commission-btn" data-product="Luna Halo Choker">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 7 -->
+                    <article class="product-slide" data-index="6">
+                        <div class="product-inner">
+                            <div class="product-visual shape-collar"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Collectors Only</span>
+                                </div>
+                                <h2 class="product-name">Midnight Nova Collar</h2>
+                                <p class="product-desc">
+                                    A darkened platinum collar ignited by a burst of uncut starlight at its centre — a wearable supernova.
+                                </p>
+                                <p class="product-spec">
+                                    Blackened Platinum · Radiant Uncut Cluster
+                                </p>
+                                <button class="commission-btn" data-product="Midnight Nova Collar">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 8 -->
+                    <article class="product-slide" data-index="7">
+                        <div class="product-inner">
+                            <div class="product-visual shape-ring-soft"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Private Edition</span>
+                                </div>
+                                <h2 class="product-name">Cosmic Whisper Ring</h2>
+                                <p class="product-desc">
+                                    An impossibly fine rose gold band circling a single uncut diamond, like a secret kept between stars.
+                                </p>
+                                <p class="product-spec">
+                                    18K Rose Gold · Solitaire Uncut Setting
+                                </p>
+                                <button class="commission-btn" data-product="Cosmic Whisper Ring">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 9 -->
+                    <article class="product-slide" data-index="8">
+                        <div class="product-inner">
+                            <div class="product-visual shape-brooch"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>One of One</span>
+                                </div>
+                                <h2 class="product-name">Nebula Pearl Brooch</h2>
+                                <p class="product-desc">
+                                    A sculptural brooch shaped like a drifting nebula, with an uncut core stone at its luminous heart.
+                                </p>
+                                <p class="product-spec">
+                                    Mixed Metals · Sculpted Nebula Silhouette
+                                </p>
+                                <button class="commission-btn" data-product="Nebula Pearl Brooch">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- 10 -->
+                    <article class="product-slide" data-index="9">
+                        <div class="product-inner">
+                            <div class="product-visual shape-band-slim"></div>
+                            <div class="product-meta">
+                                <div class="rarity-pill">
+                                    <span class="rarity-dot"></span>
+                                    <span>Collectors Only</span>
+                                </div>
+                                <h2 class="product-name">Infinity Startrail Band</h2>
+                                <p class="product-desc">
+                                    An endless platinum band traced with a river of uncut diamonds, like a perpetual trail of shooting stars.
+                                </p>
+                                <p class="product-spec">
+                                    Platinum · Continuous Startrail Channel
+                                </p>
+                                <button class="commission-btn" data-product="Infinity Startrail Band">
+                                    <span class="icon">✶</span>
+                                    <span>Commission This Piece</span>
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+
+            <button class="carousel-arrow arrow-next" aria-label="Next piece">›</button>
+        </section>
+    </div>
+
+    <!-- 🔥 Same Overlay MENU from Home Page -->
+<div class="overlay-menu" id="luxuryMenu">
+    <button class="close-btn" onclick="toggleMenu()">Close &times;</button>
+
+    <div class="menu-container">
+        <div class="menu-column" style="--order: 1; display: flex; flex-direction: column; height: 100%;">
+            <div>
+                <h3>01. Custom Jewellery</h3>
+                <ul>
+                    <li><a href="#">Create Your Design</a></li>
+                    <li><a href="#">Bring Your Idea / Reference</a></li>
+                    <li><a href="#">Redesign Old Jewellery</a></li>
+                    <li><a href="#">Bespoke Bridal Sets</a></li>
+                </ul>
+            </div>
+
+            <div class="sub-section mt-5 login-section" style="margin-top: auto; padding-top: 40px;">
+                <button class="gold-btn" onclick="openLuxuryLogin()">
+                    LOGIN / JOIN WORLD
+                </button>
+            </div>
+        </div>
+
+        <div class="menu-column" style="--order: 2;">
+            <h3>02. Our Creations</h3>
+            <ul>
+                <li><a href="#">Signature Designs</a></li>
+                <li><a href="#">Bridal Highlights</a></li>
+                <li><a href="#">Couple Rings & Bands</a></li>
+                <li><a href="#">Limited Showcase Pieces</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-column" style="--order: 3;">
+            <h3>03. Design Gallery</h3>
+            <p class="subtitle">Made on Order Only</p>
+            <ul>
+                <li><a href="#">Rings</a></li>
+                <li><a href="#">Neckpieces</a></li>
+                <li><a href="#">Earrings</a></li>
+                <li><a href="#">Bangles / Bracelets</a></li>
+            </ul>
+        </div>
+
+        <div class="menu-column" style="--order: 4;">
+            <div class="sub-section">
+                <h3>04. How It Works</h3>
+                <ul>
+                    <li><span>Step 1:</span> Share Your Vision</li>
+                    <li><span>Step 2:</span> 3D / Sketch Approval</li>
+                    <li><span>Step 3:</span> Crafting & Detailing</li>
+                    <li><span>Step 4:</span> Delivery & Aftercare</li>
+                </ul>
+            </div>
+            
+            <div class="sub-section mt-5">
+                <h3>05. Book Consultation</h3>
+                <ul>
+                    <li><a href="#">In-store Appointment</a></li>
+                    <li><a href="#">Video Call Design Session</a></li>
+                    <li><a href="#">WhatsApp with Designer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   <div id="luxuryAuthModal" class="auth-overlay">
+    <button class="close-auth" onclick="closeLuxuryLogin()">&times;</button>
+    
+    <div class="auth-card">
+        <div class="auth-header-top">
+            <h3>MEMBER ACCESS</h3>
+            <p>Welcome to the world of exclusive luxury.</p>
+        </div>
+
+        <div class="social-login-wrapper">
+            <button class="social-btn google">
+                <img src="https://cdn-icons-png.flaticon.com/128/300/300221.png" alt="G">
+                <span>Continue with Google</span>
+            </button>
+            <button class="social-btn twitter">
+                <img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="X">
+                <span>Continue with X</span>
+            </button>
+        </div>
+
+        <div class="divider"><span>OR</span></div>
+
+        <div class="auth-tabs">
+            <button class="tab-btn active" onclick="switchAuthTab('login')">Log In</button>
+            <button class="tab-btn" onclick="switchAuthTab('signup')">Sign Up</button>
+            <div class="gold-line"></div>
+        </div>
+
+        <div class="forms-container">
+            <form id="loginForm" class="auth-form active-form">
+                <div class="input-wrap">
+                    <input type="email" required placeholder=" ">
+                    <label>Email Address</label>
+                </div>
+                <div class="input-wrap">
+                    <input type="password" required placeholder=" ">
+                    <label>Password</label>
+                </div>
+                <div class="form-footer">
+                    <label><input type="checkbox"> Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="button" class="submit-btn">UNLOCK ACCESS</button>
+            </form>
+
+            <form id="signupForm" class="auth-form">
+                <div class="input-wrap">
+                    <input type="text" required placeholder=" ">
+                    <label>Full Name</label>
+                </div>
+                <div class="input-wrap">
+                    <input type="email" required placeholder=" ">
+                    <label>Email Address</label>
+                </div>
+                <div class="input-wrap">
+                    <input type="password" required placeholder=" ">
+                    <label>Create Password</label>
+                </div>
+                <button type="button" class="submit-btn">JOIN THE CLUB</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    <!-- COMMISSION MODAL (FULL) -->
+    <div class="commission-modal-backdrop" id="commissionModal">
+        <div class="commission-modal">
+            <button class="close-commission-btn" id="closeCommissionModal" aria-label="Close form">
+                &times;
+            </button>
+
+            <div class="commission-modal-header">
+                <div class="commission-modal-eyebrow">Private Commission Request</div>
+                <h2 class="commission-modal-title">Begin Your Journey</h2>
+                <p class="commission-modal-subtitle">
+                    Share a few details and our atelier will connect with you personally to bring this celestial piece to life.
+                </p>
+                <p class="selected-piece">
+                    Commissioning: <span id="selectedPieceName">Selected Piece</span>
+                </p>
+            </div>
+
+            <form class="commission-form">
+                <div class="form-full">
+                    <label for="fullName">Full Name</label>
+                    <input id="fullName" type="text" placeholder="Enter your full name" />
+                </div>
+
+                <div>
+                    <label for="whatsapp">WhatsApp No.</label>
+                    <input id="whatsapp" type="tel" placeholder="+91 -" />
+                </div>
+
+                <div>
+                    <label for="metal">Preferred Metal</label>
+                    <select id="metal">
+                        <option value="" disabled selected>Select metal</option>
+                        <option>Platinum</option>
+                        <option>18K Rose Gold</option>
+                        <option>18K White Gold</option>
+                        <option>Platinum &amp; Rose Gold Mix</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="grade">Grade Uncut Diam.</label>
+                    <select id="grade">
+                        <option value="" disabled selected>Select grade</option>
+                        <option>Heirloom – Museum Quality</option>
+                        <option>Signature – High Collection</option>
+                        <option>Classic – Everyday Luxury</option>
+                    </select>
+                </div>
+
+                <div class="form-full">
+                    <label for="request">Customization Request</label>
+                    <textarea id="request" placeholder="Share sizing, budget range, occasion or any custom ideas you have in mind."></textarea>
+                </div>
+
+                <div class="commission-submit-row">
+                    <button type="submit" class="commission-submit-btn">
+                        Submit Request
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- 🖼 Fullscreen Image Lightbox -->
+    <div class="image-lightbox" id="imageLightbox">
+        <div class="image-lightbox-backdrop" id="imageLightboxBackdrop"></div>
+        <div class="image-lightbox-content">
+            <button class="image-lightbox-close" id="closeLightbox">&times;</button>
+            <img id="lightboxImage" alt="Jewellery Piece" />
+        </div>
+    </div>
+
+    <!-- CAROUSEL + MODAL JS -->
+    <script src="collection.js"></script>
+
+    <!-- MENU + LOGIN JS -->
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('luxuryMenu');
+            if(menu) menu.classList.toggle('active');
+        }
+
+        function openLuxuryLogin() {
+            const modal = document.getElementById('luxuryAuthModal');
+            if(modal) {
+                modal.classList.add('active');
+                switchAuthTab('login');
+            }
+        }
+
+        function closeLuxuryLogin() {
+            const modal = document.getElementById('luxuryAuthModal');
+            if(modal) modal.classList.remove('active');
+        }
+
+        function switchAuthTab(type) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const goldLine = document.querySelector('.gold-line');
+
+            if (type === 'login') {
+                tabBtns[0].classList.add('active');
+                tabBtns[1].classList.remove('active');
+                goldLine.style.transform = 'translateX(0)';
+                loginForm.classList.add('active-form');
+                signupForm.classList.remove('active-form');
+            } else {
+                tabBtns[0].classList.remove('active');
+                tabBtns[1].classList.add('active');
+                goldLine.style.transform = 'translateX(100%)';
+                signupForm.classList.add('active-form');
+                loginForm.classList.remove('active-form');
+            }
+        }
+        
+    </script> 
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIAN Jewellery - Eternal Brilliance</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Intro Screen -->
+    <div id="intro-screen">
+        <div class="intro-content">
+            <h1 class="intro-brand">VIAN</h1>
+            <p class="intro-sub">Jewellery</p>
+            <p class="intro-tagline">Luxury You Don’t Wear, You Become</p>
+        </div>
+    </div>
+
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="bgVideo">
+        <source src="jvd.mp4.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <nav class="navbar">
+            <div class="logo-container">
+                <div class="logo-top">
+                    <div class="line"></div>
+                    <img src="WhatsApp Image 2025-12-05 at 19.12.33_9f4f5b7a 1.png" alt="Lotus Logo" class="lotus-image">
+                    <div class="line"></div>
+                </div>
+                <h1 class="brand-name">VIAN</h1>
+                <p class="brand-subtitle">Jewellery</p>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="hero-section">
+        <p class="collection-year">The 2025 High Jewellery Collection</p>
+        <h2 class="main-headline">ETERNAL BRILLIANCE</h2>
+        <div class="product-showcase">
+            <button class="cta-button">Explore Collection</button>
+        </div>
+    </main>
+
+    <!-- Menu Trigger -->
+    <button class="menu-trigger" onclick="toggleMenu()">
+        <span class="text">MENU</span>
+        <span class="line"></span>
+    </button>
+
+    <!-- Overlay Menu (ONLY THIS VERSION KEPT – with LOGIN / JOIN WORLD) -->
+    <div class="overlay-menu" id="luxuryMenu">
+        
+        <button class="close-btn" onclick="toggleMenu()">Close &times;</button>
+
+        <div class="menu-container">
+            
+            <div class="menu-column" style="--order: 1; display: flex; flex-direction: column; height: 100%;">
+                <div>
+                    <h3>01. Custom Jewellery</h3>
+                    <ul>
+                        <li><a href="#">Create Your Design</a></li>
+                        <li><a href="#">Bring Your Idea / Reference</a></li>
+                        <li><a href="#">Redesign Old Jewellery</a></li>
+                        <li><a href="#">Bespoke Bridal Sets</a></li>
+                    </ul>
+                </div>
+
+                <div class="sub-section mt-5 login-section" style="margin-top: auto; padding-top: 40px;">
+                    <button class="gold-btn" onclick="openLuxuryLogin()">
+                        LOGIN / JOIN WORLD
+                    </button>
+                </div>
+            </div>
+
+            <div class="menu-column" style="--order: 2;">
+                <h3>02. Our Creations</h3>
+                <ul>
+                    <li><a href="#">Signature Designs</a></li>
+                    <li><a href="#">Bridal Highlights</a></li>
+                    <li><a href="#">Couple Rings & Bands</a></li>
+                    <li><a href="#">Limited Showcase Pieces</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-column" style="--order: 3;">
+                <h3>03. Design Gallery</h3>
+                <p class="subtitle">Made on Order Only</p>
+                <ul>
+                    <li><a href="#">Rings</a></li>
+                    <li><a href="#">Neckpieces</a></li>
+                    <li><a href="#">Earrings</a></li>
+                    <li><a href="#">Bangles / Bracelets</a></li>
+                </ul>
+            </div>
+
+            <div class="menu-column" style="--order: 4;">
+                <div class="sub-section">
+                    <h3>04. How It Works</h3>
+                    <ul>
+                        <li><span>Step 1:</span> Share Your Vision</li>
+                        <li><span>Step 2:</span> 3D / Sketch Approval</li>
+                        <li><span>Step 3:</span> Crafting & Detailing</li>
+                        <li><span>Step 4:</span> Delivery & Aftercare</li>
+                    </ul>
+                </div>
+                
+                <div class="sub-section mt-5">
+                    <h3>05. Book Consultation</h3>
+                    <ul>
+                        <li><a href="#">In-store Appointment</a></li>
+                        <li><a href="#">Video Call Design Session</a></li>
+                        <li><a href="#">WhatsApp with Designer</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Login / Signup Modal -->
+    <div id="luxuryAuthModal" class="auth-overlay">
+        <button class="close-auth" onclick="closeLuxuryLogin()">&times;</button>
+        
+        <div class="auth-card">
+            
+            <div class="auth-header-top">
+                <h3>MEMBER ACCESS</h3>
+                <p>Welcome to the world of exclusive luxury.</p>
+            </div>
+
+            <div class="social-login-wrapper">
+                <button class="social-btn google">
+                    <img src="https://cdn-icons-png.flaticon.com/128/300/300221.png" alt="G">
+                    <span>Continue with Google</span>
+                </button>
+                <button class="social-btn twitter">
+                    <img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="X">
+                    <span>Continue with X</span>
+                </button>
+            </div>
+
+            <div class="divider"><span>OR</span></div>
+
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="switchAuthTab('login')">Log In</button>
+                <button class="tab-btn" onclick="switchAuthTab('signup')">Sign Up</button>
+                <div class="gold-line"></div>
+            </div>
+
+            <div class="forms-container">
+                
+                <form id="loginForm" class="auth-form active-form">
+                    <div class="input-wrap">
+                        <input type="email" required placeholder=" ">
+                        <label>Email Address</label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="password" required placeholder=" ">
+                        <label>Password</label>
+                    </div>
+                    <div class="form-footer">
+                        <label><input type="checkbox"> Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <button type="button" class="submit-btn">UNLOCK ACCESS</button>
+                </form>
+
+                <form id="signupForm" class="auth-form">
+                    <div class="input-wrap">
+                        <input type="text" required placeholder=" ">
+                        <label>Full Name</label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="email" required placeholder=" ">
+                        <label>Email Address</label>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="password" required placeholder=" ">
+                        <label>Create Password</label>
+                    </div>
+                    <button type="button" class="submit-btn">JOIN THE CLUB</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('luxuryMenu');
+            if (menu) menu.classList.toggle('active');
+        }
+
+        /* --- LOGIN MODAL LOGIC --- */
+        function openLuxuryLogin() {
+            const modal = document.getElementById('luxuryAuthModal');
+            if (modal) {
+                modal.classList.add('active');
+                switchAuthTab('login');
+            } else {
+                console.error("Error: luxuryAuthModal not found");
+            }
+        }
+
+        function closeLuxuryLogin() {
+            const modal = document.getElementById('luxuryAuthModal');
+            if (modal) modal.classList.remove('active');
+        }
+
+        function switchAuthTab(type) {
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const goldLine = document.querySelector('.gold-line');
+
+            if (type === 'login') {
+                tabBtns[0].classList.add('active');
+                tabBtns[1].classList.remove('active');
+                goldLine.style.transform = 'translateX(0)';
+
+                loginForm.classList.add('active-form');
+                loginForm.style.transform = 'translateX(0)';
+                
+                signupForm.classList.remove('active-form');
+                signupForm.style.transform = 'translateX(50px)';
+            } else {
+                tabBtns[0].classList.remove('active');
+                tabBtns[1].classList.add('active');
+                goldLine.style.transform = 'translateX(100%)';
+
+                signupForm.classList.add('active-form');
+                signupForm.style.transform = 'translateX(0)';
+                
+                loginForm.classList.remove('active-form');
+                loginForm.style.transform = 'translateX(-50px)';
+            }
+        }
+           
+     
+    document.addEventListener('DOMContentLoaded', function () {
+        const ctaButton = document.querySelector('.cta-button');
+
+        if (ctaButton) {
+            ctaButton.addEventListener('click', function () {
+                // Explore Collection → open black collection page
+                window.location.href = 'collection.html';
+            });
+        }
+    });
+    
+</script>
+
+    </script>
+</body>
+</html>
+
+    </script>
+</body>
+</html>

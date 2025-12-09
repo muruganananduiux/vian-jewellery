@@ -1,0 +1,599 @@
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #000;
+    color: #fff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.collection-page {
+    min-height: 100vh;
+    padding: 32px clamp(20px, 6vw, 60px);
+    display: flex;
+    flex-direction: column;
+
+    /* 🔥 entry animation state (before visible) */
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+    filter: blur(10px);
+    transition:
+        opacity 0.8s ease-out,
+        transform 0.8s ease-out,
+        filter 0.8s ease-out;
+}
+
+/* page fully visible after JS adds class */
+.collection-page.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+}
+
+
+/* ===== HEADER ===== */
+.collection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.brand-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.brand-mark {
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #D4AF37;
+}
+
+.brand-tagline {
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    
+}
+
+.collection-menu-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* ===== HERO TEXT ===== */
+.collection-hero {
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    text-align: center;
+}
+
+.collection-badge {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 16px;
+}
+
+.collection-title {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(24px, 3vw, 36px);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: #D4AF37; /* primary */
+}
+
+.collection-subcopy {
+    font-size: 13px;
+    opacity: 0.75;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+/* ===== CAROUSEL ===== */
+.carousel-section {
+    margin-top: 40px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.carousel-viewport {
+    flex: 1;
+    position: relative;
+    height: 480px;
+    max-width: 980px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Arrows */
+.carousel-arrow {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    color: #fff;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    font-size: 22px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.carousel-arrow:hover {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.4);
+}
+
+/* Slides depth */
+.product-slide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(100%, 860px);
+    transform: translate(-50%, -50%) scale(0.7);
+    opacity: 0;
+    filter: blur(6px);
+    pointer-events: none;
+    transition: transform 0.55s ease, opacity 0.55s ease, filter 0.55s ease;
+    will-change: transform, opacity, filter;
+}
+
+.product-slide.prev {
+    transform: translate(-115%, -50%) scale(0.68);
+    opacity: 0.4;
+    filter: blur(5px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.product-slide.next {
+    transform: translate(15%, -50%) scale(0.68);
+    opacity: 0.4;
+    filter: blur(5px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.product-slide.active {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    filter: blur(0);
+    pointer-events: auto;
+    z-index: 3;
+}
+
+.product-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 20px 22px 22px;
+    border-radius: 26px;
+    background: rgba(10, 10, 10, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.9);
+
+    /* card entry feel */
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+    transition:
+        opacity 0.7s ease-out,
+        transform 0.7s ease-out;
+}
+
+/* sirf active slide ke card ko fully show karo
+   jab page visible ho jaye */
+.collection-page.visible .product-slide.active .product-inner {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+
+/* Product visual = image block */
+.product-visual {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background-color: #111;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: zoom-in;
+}
+
+/* different heights to get mixed shapes feel */
+.shape-orbit,
+.shape-orbit-soft,
+.shape-choker,
+.shape-collar,
+.shape-brooch {
+    height: 320px;
+}
+
+.shape-portrait,
+.shape-teardrop {
+    height: 360px;
+}
+
+.shape-band,
+.shape-ring-soft,
+.shape-band-slim {
+    height: 260px;
+}
+
+/* ===== PRODUCT META ===== */
+.product-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rarity-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    opacity: 0.85;
+}
+
+.rarity-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffe494, #ffffff);
+}
+
+.product-name {
+    font-family: "Playfair Display", serif;
+    font-size: 18px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.product-desc {
+    font-size: 13px;
+    opacity: 0.78;
+    margin-bottom: 10px;
+}
+
+.product-spec {
+    font-size: 11px;
+    opacity: 0.65;
+    margin-bottom: 18px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.commission-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.commission-btn .icon {
+    font-size: 14px;
+}
+
+.commission-btn:hover {
+    background: #ffffff;
+    color: #000;
+    box-shadow: 0 0 28px rgba(255, 255, 255, 0.35);
+}
+
+/* ===== COMMISSION MODAL ===== */
+.commission-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.commission-modal-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.commission-modal {
+    width: min(520px, 92vw);
+    background: radial-gradient(circle at top, #1b1b1b, #050505 72%);
+    border-radius: 28px;
+    padding: 26px 26px 22px 26px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 26px 60px rgba(0, 0, 0, 0.9);
+    position: relative;
+    color: #fff;
+}
+
+.close-commission-btn {
+    position: absolute;
+    top: 14px;
+    right: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    background: none;
+    border: none;
+    color: #fff;
+    transition: opacity 0.2s ease;
+}
+
+.close-commission-btn:hover {
+    opacity: 1;
+}
+
+.commission-modal-header {
+    margin-bottom: 16px;
+}
+
+.commission-modal-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 8px;
+}
+
+.commission-modal-title {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.commission-modal-subtitle {
+    font-size: 12px;
+    opacity: 0.75;
+    margin-top: 8px;
+}
+
+.selected-piece {
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    margin-top: 8px;
+}
+
+.selected-piece span {
+    opacity: 1;
+    font-weight: 500;
+}
+
+/* Form */
+.commission-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+    margin-top: 4px;
+}
+
+.commission-form .form-full {
+    grid-column: 1 / -1;
+}
+
+.commission-form label {
+    display: block;
+    font-size: 11px;
+    margin-bottom: 6px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.commission-form input,
+.commission-form select,
+.commission-form textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+    transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.commission-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.commission-form input:focus,
+.commission-form select:focus,
+.commission-form textarea:focus {
+    border-color: #ffffff;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.commission-submit-row {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.commission-submit-btn {
+    padding: 11px 26px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    background: #ffffff;
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+.commission-submit-btn:hover {
+    box-shadow: 0 0 24px rgba(255, 255, 255, 0.35);
+    transform: translateY(-1px);
+}
+
+/* ===== FULLSCREEN IMAGE LIGHTBOX ===== */
+.image-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.image-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.image-lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+}
+
+.image-lightbox-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.image-lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 26px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+    object-fit: contain;
+}
+
+.image-lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.image-lightbox-close:hover {
+    background: #fff;
+    color: #000;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 960px) {
+    .carousel-section {
+        flex-direction: column;
+    }
+
+    .carousel-arrow {
+        order: -1;
+    }
+
+    .carousel-viewport {
+        height: 520px;
+    }
+}
+
+@media (max-width: 640px) {
+    .collection-page {
+        padding: 20px 16px 32px;
+    }
+
+    .collection-header {
+        margin-bottom: 26px;
+    }
+
+    .carousel-viewport {
+        height: 540px;
+    }
+
+    .product-inner {
+        padding: 18px 16px;
+    }
+
+    .brand-mark {
+        font-size: 15px;
+        letter-spacing: 0.25em;
+    }
+
+    .collection-title {
+        letter-spacing: 0.18em;
+    }
+}
+
+/* 🔹 IMAGE PLACEHOLDERS – tum yaha apne image path rakh sakte ho */
+.product-slide[data-index="0"] .product-visual { background-image: url("Celestial\ Aurora\ Necklace.jpg"); }
+.product-slide[data-index="1"] .product-visual { background-image: url("Stellar\ Crown\ Ring.jpg"); }
+.product-slide[data-index="2"] .product-visual { background-image: url("Solstice\ Ray\ Earrings.jpg"); }
+.product-slide[data-index="3"] .product-visual { background-image: url("Orion\ Path\ Bracelet.jpg"); }
+.product-slide[data-index="4"] .product-visual { background-image: url("Aurora\ Mist\ Pendant.jpg"); }
+.product-slide[data-index="5"] .product-visual { background-image: url("Luna\ Halo\ Choker.jpg"); }
+.product-slide[data-index="6"] .product-visual { background-image: url("Midnight\ Nova\ Collar.jpg"); }
+.product-slide[data-index="7"] .product-visual { background-image: url("Cosmic\ Whisper\ Ring.jpg"); }
+.product-slide[data-index="8"] .product-visual { background-image: url("Nebula\ Pearl\ Brooch.jpg"); }
+.product-slide[data-index="9"] .product-visual { background-image: url("Infinity\ Startrail\ Band.jpg"); }

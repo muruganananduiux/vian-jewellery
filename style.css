@@ -1,0 +1,959 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Header & Navigation */
+.site-header {
+    padding: 20px 40px;
+    width: 100%;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-top: 15px;
+}
+
+/* Logo Styling */
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+}
+
+.logo-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+}
+
+.line {
+    height: 1px;
+    width: 150px;
+    background: linear-gradient(90deg, transparent, #555, transparent);
+}
+
+/* --- YAHAN CHANGE HUA HAI --- */
+/* Lotus Image Styling */
+.lotus-image {
+    width: 65px; /* Image ka size yahan se adjust karein */
+    height: auto; /* Aspect ratio maintain karega */
+    display: block;
+}
+/* --------------------------- */
+
+.brand-name {
+    font-family: 'Cetrinn';
+    font-size: 2.5rem;
+    color: #D4AF37;
+    letter-spacing: 8px;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+.brand-subtitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* Hero Section */
+.hero-section {
+    text-align: center;
+    padding-top: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.collection-year {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+}
+
+.main-headline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    margin-bottom: 40px;
+}
+
+/* Image & Button Wrapper */
+.product-showcase {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Button Styling (Default - Outline Wala) */
+.cta-button {
+    background-color: transparent; /* Fill hata diya */
+    border: 2px solid #C5A059;     /* Sirf Border rakha */
+    color: #C5A059;                /* Text ka color bhi Gold */
+    
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    z-index: 10;
+    margin-bottom: -30px;
+    transition: all 0.4s ease; /* Animation speed */
+}
+
+/* Hover Effect (Mouse le jane par fill hoga) */
+.cta-button:hover {
+    background-color: #C5A059; /* Ab Gold color fill hoga */
+    color: #000000;            /* Text black ho jayega taaki dikhe */
+    transform: scale(1.05);    /* Thoda sa bada hoga */
+    box-shadow: 0 0 15px rgba(197, 160, 89, 0.6); /* Glow effect */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .line { width: 50px; }
+    .brand-name { font-size: 2rem; }
+    .main-headline { font-size: 1.8rem; letter-spacing: 0.1em; }
+    .site-header { padding: 20px; }
+    .nav-link { font-size: 0.8rem; }
+}
+
+/* Video ko background mein fix karne ke liye */
+#bgVideo {
+    position: fixed;
+    top: 5px;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2; /* Content ke piche */
+    object-fit: cover;
+}
+
+/* Video ke upar halka kala rang (Overlay) */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* 0.6 ko kam/zyada karke darkness set karein */
+    z-index: -1;
+}
+/* Intro Screen Container */
+#intro-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1.5s ease-in-out; /* Smooth Fade Out for screen */
+}
+
+.intro-content {
+    text-align: center;
+}
+
+/* Brand Name (VIAN) Styling */
+.intro-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 0px; /* Shuru mein letters chipke rahenge */
+    
+    /* Luxury Gold Gradient */
+    background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    
+    opacity: 0;
+    transform: translateY(20px); /* Thoda niche se upar aayega */
+    transition: all 1.5s ease-out; /* JavaScript isko control karega */
+}
+
+/* Subtitle (JEWELLERY) Styling */
+.intro-sub {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #888; /* Elegant Grey/Gold hint */
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-top: 10px;
+    
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 1.2s ease-out;
+}
+.intro-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem; /* Jewellery (0.8rem) se bada, Brand (5rem) se chota */
+    color: #ffffff;    /* Pure White */
+    font-weight: 300;  /* Thoda elegant aur patla font */
+    margin-top: 20px;  /* Thoda gap */
+    opacity: 0;        /* Shuru mein gayab */
+    transform: translateY(15px);
+    transition: all 1s ease-out;
+}
+
+/* Animation hone par ye class lagegi */
+.intro-tagline.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile ke liye size adjustment */
+@media (max-width: 768px) {
+    .intro-tagline { font-size: 0.9rem; }
+}
+
+/* --- JAVASCRIPT TRIGGER CLASSES --- */
+
+/* Jab ye class add hogi tab Brand dikhega */
+.intro-brand.visible {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 10px; /* Luxury expansion effect */
+}
+
+/* Jab ye class add hogi tab Subtitle dikhega */
+.intro-sub.visible {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: 12px; /* Subtitle zyada failega */
+    color: #C5A059; /* End mein Gold ban jayega */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .intro-brand { font-size: 3rem; }
+    .intro-sub { font-size: 0.8rem; }
+}
+
+/* --- Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f4; /* Homepage background */
+    font-family: 'Montserrat', sans-serif;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* --- Typography Variables --- */
+:root {
+    --gold: #D4AF37;
+    --dark-bg: #0b0b0b;
+    --text-white: #ffffff;
+    --text-grey: #888888;
+    --font-heading: 'Cinzel', serif; /* Classic Luxury Font */
+    --font-body: 'Montserrat', sans-serif;
+}
+
+/* --- Menu Trigger Button --- */
+.menu-trigger {
+    position: fixed;
+    top: 30px;
+    right: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    mix-blend-mode: difference; /* Visible on any background */
+}
+
+.menu-trigger .text {
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: white; /* Changed to white for visibility on difference mode */
+}
+
+.menu-trigger .line {
+    width: 40px;
+    height: 1px;
+    background-color: white;
+    transition: width 0.3s ease;
+}
+
+.menu-trigger:hover .line {
+    width: 60px;
+}
+
+/* --- Overlay Menu Container --- */
+.overlay-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-bg);
+    z-index: 999;
+    
+    /* Animation Magic: Clip Path */
+    clip-path: circle(0% at 100% 0%);
+    transition: clip-path 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-white);
+}
+
+/* State: Open */
+.overlay-menu.active {
+    clip-path: circle(150% at 100% 0%);
+}
+
+/* --- Close Button --- */
+.close-btn {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    background: none;
+    border: none;
+    color: var(--text-grey);
+    font-family: var(--font-body);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: var(--gold);
+}
+
+/* --- Menu Grid Layout --- */
+.menu-container {
+    width: 90%;
+    max-width: 1400px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    padding: 20px;
+}
+
+/* --- Menu Columns & Animations --- */
+.menu-column {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+    transition-delay: calc(0.1s * var(--order)); /* Staggered Effect */
+}
+
+.overlay-menu.active .menu-column {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Headings */
+.menu-column h3 {
+    font-family: var(--font-heading);
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: var(--text-grey);
+    font-style: italic;
+    margin-bottom: 15px;
+    margin-top: -10px;
+}
+
+/* List Items */
+.menu-column ul {
+    list-style: none;
+}
+
+.menu-column ul li {
+    margin-bottom: 12px;
+}
+
+/* Links */
+.menu-column ul li a {
+    text-decoration: none;
+    color: var(--text-white);
+    font-size: 1rem;
+    font-weight: 300;
+    transition: padding-left 0.3s ease, color 0.3s ease;
+    display: block;
+}
+
+.menu-column ul li span {
+    color: var(--text-grey);
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 2px;
+}
+
+/* Hover Effect on Links */
+.menu-column ul li a:hover {
+    color: var(--gold);
+    padding-left: 10px; /* Slide effect */
+}
+
+.mt-5 {
+    margin-top: 40px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-container {
+        grid-template-columns: 1fr; /* Stack on mobile */
+        overflow-y: auto;
+        max-height: 90vh;
+    }
+    .menu-column h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* --- 1. Login Trigger Button in Menu --- */
+.gold-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 12px 30px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.gold-btn:hover {
+    background: var(--gold);
+    color: var(--dark-bg);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+/* --- 2. Auth Modal Overlay (Background) --- */
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* Dark dimming */
+    backdrop-filter: blur(8px); /* Blur effect behind modal */
+    z-index: 2000; /* Higher than menu */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s ease;
+}
+
+.auth-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- 3. The Luxury Card --- */
+.auth-card {
+    background: linear-gradient(145deg, #1a1a1a, #0d0d0d);
+    width: 450px;
+    padding: 40px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    transform: translateY(50px) scale(0.9);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bouncy enter effect */
+}
+
+.auth-overlay.active .auth-card {
+    transform: translateY(0) scale(1);
+}
+
+/* Close Button for Auth */
+.close-auth {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s;
+    z-index: 2001;
+}
+.close-auth:hover { color: var(--gold); }
+
+/* --- LUXURY OVERLAY (Background) --- */
+.auth-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9); /* गहरा काला बैकग्राउंड */
+    backdrop-filter: blur(15px); /* हाई क्वालिटी ब्लर */
+    z-index: 99999; /* सबसे ऊपर */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.auth-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- THE GOLD CARD --- */
+.auth-card {
+    width: 450px;
+    background: #0a0a0a;
+    border: 1px solid #D4AF37; /* Gold Border */
+    padding: 40px;
+    position: relative;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.15); /* Gold Glow */
+    transform: translateY(50px) scale(0.95);
+    transition: all 0.5s ease;
+}
+
+.auth-overlay.active .auth-card {
+    transform: translateY(0) scale(1);
+}
+
+/* Close Button */
+.close-auth {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: #555;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 100;
+}
+.close-auth:hover { color: #D4AF37; transform: rotate(90deg); }
+
+/* Headers */
+.auth-header-top { text-align: center; margin-bottom: 30px; }
+.auth-header-top h3 { 
+    color: #D4AF37; 
+    font-family: 'Cinzel', serif; 
+    font-size: 1.8rem; 
+    letter-spacing: 2px;
+}
+.auth-header-top p { color: #888; font-size: 0.9rem; margin-top: 5px; }
+
+/* --- SOCIAL BUTTONS (Google & Twitter) --- */
+.social-login-wrapper {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px;
+    background: #111;
+    border: 1px solid #333;
+    color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+}
+
+.social-btn img { width: 18px; filter: invert(1); } /* Icons white */
+
+.social-btn:hover {
+    border-color: #D4AF37;
+    background: #1a1a1a;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+/* Divider */
+.divider { text-align: center; margin: 20px 0; border-bottom: 1px solid #222; line-height: 0; }
+.divider span { background: #0a0a0a; padding: 0 10px; color: #555; font-size: 0.8rem; }
+
+/* --- TABS & FORM --- */
+.auth-tabs { display: flex; position: relative; margin-bottom: 30px; border-bottom: 1px solid #222; }
+.tab-btn {
+    flex: 1;
+    background: none;
+    border: none;
+    color: #666;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Cinzel', serif;
+}
+.tab-btn.active { color: #D4AF37; }
+
+.gold-line {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 50%;
+    height: 2px;
+    background: #D4AF37;
+    transition: 0.4s ease;
+}
+
+.forms-container { position: relative; min-height: 300px; overflow: hidden; }
+
+.auth-form {
+    position: absolute;
+    width: 100%;
+    transition: 0.5s ease;
+    opacity: 0;
+    transform: translateX(30px);
+    pointer-events: none;
+}
+.auth-form.active-form { opacity: 1; transform: translateX(0); pointer-events: all; }
+
+/* Inputs */
+.input-wrap { position: relative; margin-bottom: 25px; }
+.input-wrap input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #333;
+    padding: 10px 0;
+    color: #fff;
+    outline: none;
+}
+.input-wrap input:focus { border-color: #D4AF37; }
+.input-wrap label {
+    position: absolute;
+    left: 0; top: 10px;
+    color: #666;
+    pointer-events: none;
+    transition: 0.3s;
+}
+.input-wrap input:focus ~ label,
+.input-wrap input:not(:placeholder-shown) ~ label {
+    top: -12px; font-size: 0.8rem; color: #D4AF37;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+.submit-btn:hover { transform: scale(1.02); box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); }
+
+/* Responsive */
+@media (max-width: 500px) { .auth-card { width: 95%; padding: 20px; } }
+
+
+
+/* --- 1. EXPLORE BUTTON (Hero Section) --- */
+.cta-button {
+    /* ...purani styles... */
+    border-radius: 50px; /* बटन को पूरा गोल करने के लिए */
+}
+
+/* --- 2. LOGIN / JOIN WORLD BUTTON (Menu) --- */
+.gold-btn {
+    border-radius: 50px; /* यह भी pill shape जैसा हो जाएगा */
+}
+
+/* --- 3. LOGIN POPUP BOX (Main Card) --- */
+.auth-card {
+    border-radius: 16px; /* बॉक्स के कोने थोड़े सॉफ्ट (Soft) दिखेंगे */
+    overflow: hidden; /* ताकि कोनों से कंटेंट बाहर न निकले */
+}
+
+/* --- 4. BUTTONS INSIDE LOGIN FORM (Unlock/Join) --- */
+.submit-btn {
+    border-radius: 50px; /* अंदर वाले बटन भी मैचिंग स्टाइल में */
+}
+
+/* --- 5. SOCIAL BUTTONS (Google/Twitter) --- */
+.social-btn {
+    border-radius: 8px; /* इन्हें हल्का सा गोल रखेंगे */
+}
+
+
+/* ========== ULTRA LUXURY PAGE TRANSITION ========== */
+
+.luxury-transition {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, #111, #000 65%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(1.02);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.luxury-transition.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.luxury-transition-inner {
+    position: relative;
+    width: min(520px, 90vw);
+    height: min(320px, 70vh);
+    border-radius: 32px;
+    padding: 40px 32px;
+    background: radial-gradient(circle at top left, #1a1a1a, #050505 70%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.95);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(22px);
+}
+
+/* glowing ring behind logo */
+.transition-ring {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background:
+        radial-gradient(circle at 30% 0%, rgba(255, 255, 255, 0.35), transparent 55%),
+        radial-gradient(circle at 70% 100%, rgba(255, 220, 160, 0.35), transparent 60%);
+    opacity: 0;
+    transform: scale(0.7);
+    animation: ring-pop 1.1s ease-out forwards;
+}
+
+@keyframes ring-pop {
+    0% {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.02);
+    }
+    100% {
+        opacity: 0.95;
+        transform: scale(1);
+    }
+}
+
+.transition-logo {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+}
+
+.transition-logo .logo-top-text {
+    display: block;
+    font-family: "Playfair Display", serif;
+    font-size: 32px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    animation: logo-rise 0.9s ease-out forwards;
+    opacity: 0;
+}
+
+.transition-logo .logo-sub-text {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    animation: logo-fade 1s ease-out forwards;
+    animation-delay: 0.2s;
+    opacity: 0;
+}
+
+@keyframes logo-rise {
+    0% {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes logo-fade {
+    0% {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    100% {
+        opacity: 0.7;
+        transform: translateY(0);
+    }
+}
+
+.transition-tagline {
+    position: relative;
+    margin-top: 28px;
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    opacity: 0;
+    text-align: center;
+    z-index: 2;
+    animation: tagline-glow 0.9s ease-out forwards;
+    animation-delay: 0.35s;
+}
+
+@keyframes tagline-glow {
+    0% {
+        opacity: 0;
+        filter: blur(6px);
+    }
+    100% {
+        opacity: 0.9;
+        filter: blur(0);
+    }
+}
+
+/* subtle moving light across card */
+.luxury-transition-inner::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.18) 35%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 70%
+    );
+    opacity: 0;
+    transform: translateX(-60%) rotate(8deg);
+    animation: sweep 1.4s ease-out forwards;
+    animation-delay: 0.2s;
+}
+
+@keyframes sweep {
+    0% {
+        opacity: 0;
+        transform: translateX(-70%) rotate(8deg);
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(40%) rotate(8deg);
+    }
+}
+
+@media (max-width: 640px) {
+    .luxury-transition-inner {
+        padding: 28px 22px;
+        height: min(260px, 70vh);
+        border-radius: 26px;
+    }
+
+    .transition-logo .logo-top-text {
+        font-size: 24px;
+        letter-spacing: 0.32em;
+    }
+
+    .transition-tagline {
+        letter-spacing: 0.2em;
+        font-size: 10px;
+    }
+
+    .transition-ring {
+        width: 320px;
+        height: 320px;
+    }
+}
+
+
+
+
