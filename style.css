@@ -161,27 +161,26 @@ body {
 
 /* Video ko background mein fix karne ke liye */
 #bgVideo {
-    position: fixed;
-    top: 5px;
-    right: 0;
-    bottom: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -2; /* Content ke piche */
-    object-fit: cover;
+  position: fixed;
+  inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+  width: 100vw;           /* full viewport width */
+  height: 100vh;          /* full viewport height */
+  object-fit: cover;      /* scale & crop to cover viewport */
+  object-position: center center; /* keep center visible */
+  z-index: -3;            /* lower than page content */
+  pointer-events: none;   /* don't block clicks */
+  display: block;
+  transform: translateZ(0) scale(1.02); /* tiny scale avoids 1px gaps on some browsers */
+  will-change: transform;
 }
 
-/* Video ke upar halka kala rang (Overlay) */
+/* overlay should be above video but behind content — adjust if needed */
 .video-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* 0.6 ko kam/zyada karke darkness set karein */
-    z-index: -1;
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.6));
+  z-index: -2;
+  pointer-events: none;
 }
 /* Intro Screen Container */
 #intro-screen {
