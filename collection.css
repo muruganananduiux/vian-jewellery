@@ -597,3 +597,114 @@ body {
 .product-slide[data-index="7"] .product-visual { background-image: url("Cosmic\ Whisper\ Ring.jpg"); }
 .product-slide[data-index="8"] .product-visual { background-image: url("Nebula\ Pearl\ Brooch.jpg"); }
 .product-slide[data-index="9"] .product-visual { background-image: url("Infinity\ Startrail\ Band.jpg"); }
+
+
+/* =====================================
+   📱 TRUE MOBILE RESPONSIVE (NO GAP)
+===================================== */
+@media (max-width: 640px) {
+
+    /* Page compact */
+    .collection-page {
+        padding: 14px 12px 24px;
+        min-height: auto;
+    }
+
+    /* HERO – no extra space */
+    .collection-hero {
+        margin-bottom: 20px !important;
+    }
+
+    /* Carousel becomes normal section */
+    .carousel-section {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block;
+    }
+
+    /* Remove fake viewport height */
+    .carousel-viewport {
+        height: auto !important;
+        min-height: auto !important;
+        margin: 0 !important;
+    }
+
+    /* Normal vertical list */
+    .carousel-track {
+        position: static !important;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    /* Kill desktop carousel positioning */
+    .product-slide {
+        position: static !important;
+        transform: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+        pointer-events: auto !important;
+        width: 100%;
+    }
+
+    /* Only show active slide (IMPORTANT) */
+    .product-slide:not(.active) {
+        display: none;
+    }
+
+    /* Card tight */
+    .product-inner {
+        padding: 14px;
+        border-radius: 20px;
+        gap: 12px;
+    }
+
+    /* Image height optimized */
+    .shape-orbit,
+    .shape-orbit-soft,
+    .shape-choker,
+    .shape-collar,
+    .shape-brooch {
+        height: 220px;
+    }
+
+    .shape-portrait,
+    .shape-teardrop {
+        height: 240px;
+    }
+
+    .shape-band,
+    .shape-ring-soft,
+    .shape-band-slim {
+        height: 190px;
+    }
+
+    /* Typography */
+    .collection-title {
+        font-size: 18px;
+        letter-spacing: 0.12em;
+        line-height: 1.35;
+    }
+
+    .collection-subcopy {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .product-name {
+        font-size: 14px;
+        letter-spacing: 0.12em;
+    }
+
+    /* CTA full width */
+    .commission-btn {
+        width: 100%;
+        padding: 11px;
+        font-size: 10px;
+    }
+
+    /* Remove arrows completely */
+    .carousel-arrow {
+        display: none !important;
+    }
+}
